@@ -15,16 +15,17 @@ export default function PatientForm() {
     const {register, handleSubmit,setValue,formState: {errors},reset} = useForm<DraftPatient>()
 
     useEffect(() => {
-        if(activeId){
-            const activePacient = patients.filter(patient => patient.id === activeId)[0]
-            setValue('name',activePacient.name)
-            setValue('age',activePacient.age)
-            setValue('phone',activePacient.phone)
-            setValue('date',activePacient.date)
-            setValue('symptoms',activePacient.symptoms)
-            
+        if (activeId) {
+            const activePacient = patients.find(patient => patient.id === activeId) // Usamos find en lugar de filter
+            if (activePacient) { // Verificamos que no sea undefined
+                setValue('name', activePacient.name)
+                setValue('age', activePacient.age)
+                setValue('phone', activePacient.phone)
+                setValue('date', activePacient.date)
+                setValue('symptoms', activePacient.symptoms)
+            }
         }
-    },[activeId])
+    }, [activeId, patients, setValue]) // Agregamos patients y setValue como dependencias
     const registerPatient = (data: DraftPatient) => {
         if(activeId){
             updatePatient(data)
