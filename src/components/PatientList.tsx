@@ -4,7 +4,6 @@ export default function PatientList() {
 
   const patients = usePatientStore((state) => state.patients)
 
-  console.log(patients)
   return (
     <div className="md:w-3/4 lg:w-4/5 min-h-screen overflow-scroll">
       {patients.length ? (

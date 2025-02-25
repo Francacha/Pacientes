@@ -36,6 +36,7 @@ const Login: React.FC = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full p-2 mb-4 border rounded"
                         required
+                        autoComplete="current-email"
                     />
                     <input
                         type="password"
@@ -44,6 +45,7 @@ const Login: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full p-2 mb-4 border rounded"
                         required
+                         autoComplete="current-password"
                     />
                     <button 
                         type="submit"
